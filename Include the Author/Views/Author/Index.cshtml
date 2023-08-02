@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Include_the_Author.Models.Author>
+
+@{
+    ViewData["Title"] = "Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Author</h1>
+
+<p>
+    <a asp-action="Create">Create new</a>
+</p>
+
+
+    <hr />
+    <table>
+        <tr>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model=>model.Id)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model=>model.Name)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model=>model.Surname)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model=>model.Age)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model=>model.Type)
+            </th>
+        </tr>
+
+
+
+
+        @foreach (var modelItem in Model)
+        {
+            <tr>
+                <td class="col-sm-2">
+                    @Html.DisplayFor(item=>modelItem.Id)
+                </td>
+                <td class="col-sm-2">
+                    @Html.DisplayFor(item=>modelItem.Name)
+                </td>
+                <td class="col-sm-2">
+                    @Html.DisplayFor(item=>modelItem.Surname)
+                </td>
+                <td class="col-sm-2">
+                    @Html.DisplayFor(item=>modelItem.Age)
+                </td>
+                <td class="col-sm-2">
+                    @Html.DisplayFor(item=>modelItem.Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id = modelItem.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = modelItem.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = modelItem.Id })
+                </td>
+            </tr>
+        }
+    </table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

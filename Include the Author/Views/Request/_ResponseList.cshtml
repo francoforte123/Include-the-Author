@@ -1,0 +1,21 @@
+﻿@model List<Include_the_Author.Models.Response>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var response in Model)
+        {
+            <div class="col-sm-6 border">
+                @response.Description
+                @if (response.IsAccepted.Equals("true"))
+                {
+                    <strong>(correct)</strong>
+                }
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No responses were found for this question</p>
+}
